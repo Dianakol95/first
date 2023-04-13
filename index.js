@@ -4,7 +4,7 @@ const app = express();
 app.use(bodyParser.json());
 const firebase = require('firebase-admin');
 const userRouter = require('./api/user');
-
+const productRouter= require('./api/product');
 //otp sent 
 // var unirest = require("unirest");
 
@@ -27,6 +27,7 @@ const userRouter = require('./api/user');
 // });
 
 app.use('/users', userRouter);
+app.use('/product', productRouter);
 
 // Start the server
 const PORT = process.env.PORT || 3000;
