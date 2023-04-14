@@ -49,13 +49,13 @@ router.post('/', async (req, res) => {
 
   router.patch('/:id', async (req, res) => {
     const { id } = req.params;
-    const { details,discount,name } = req.body;
+    const { details,discount,name,price,quantity } = req.body;
   
     try {
       
-      await db.collection('products').doc(id).update({ details,discount,name });
+      await db.collection('products').doc(id).update({ details,discount,name,price,quantity });
   
-      res.json({details,discount,name });
+      res.json({details,discount,name,price,quantity });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: error.message });

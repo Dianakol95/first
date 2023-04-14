@@ -3,31 +3,17 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 const firebase = require('firebase-admin');
-const userRouter = require('./api/user');
-const productRouter= require('./api/product');
-//otp sent 
-// var unirest = require("unirest");
+const userRouter = require('./api/user'); //api path call
+const productRouter= require('./api/product');//api path call
+const otpRouter=require('./api/otp');//api path call
+const loginRouter=require('./api/login');
+const photoRouter=require('./api/photo');
 
-// var req = unirest("POST", "https://www.fast2sms.com/dev/bulkV2");
-
-// req.headers({
-//   "authorization": "JKZRDQ5fhosH2wPaNSM0G8xVWl4FubyernBU39YzEmgt7kcXApAw0aYZPqK29iOR7QlImGD48H6NLsoT"
-// });
-
-// req.form({
-//   "variables_values": "5599",
-//   "route": "otp",
-//   "numbers": "7003560239",
-// });
-
-// req.end(function (res) {
-//   if (res.error) throw new Error(res.error);
-
-//   console.log(res.body);
-// });
-
-app.use('/users', userRouter);
-app.use('/product', productRouter);
+app.use('/users', userRouter);//for frontend api call
+app.use('/product', productRouter);//for frontend api call
+app.use('/otp', otpRouter);//for frontend api call
+app.use('/login',loginRouter );
+app.use('/photo',photoRouter );
 
 // Start the server
 const PORT = process.env.PORT || 3000;

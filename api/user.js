@@ -60,7 +60,7 @@ router.delete('/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
-    await firebase.auth().deleteUser(id);
+    // await firebase.auth().deleteUser(id);
     await db.collection('users').doc(id).delete();
 
     res.status(204).send();
